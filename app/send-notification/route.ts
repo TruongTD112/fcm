@@ -13,7 +13,10 @@ if (!admin.apps.length) {
 }
 
 export async function POST(request: NextRequest) {
-  const { token, title, message, link } = await request.json();
+  const { token, title, message } = await request.json();
+  
+  // Hard code link
+  const link = "https://foodshare-ivory.vercel.app/items/38355";
 
   const payload: Message = {
     token,
@@ -21,7 +24,7 @@ export async function POST(request: NextRequest) {
       title: title,
       body: message,
     },
-    webpush: link && {
+    webpush: {
       fcmOptions: {
         link,
       },

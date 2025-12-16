@@ -4,8 +4,8 @@ import { NextRequest, NextResponse } from "next/server";
 
 // Initialize Firebase Admin SDK
 if (!admin.apps.length) {
-  // Ưu tiên đọc từ environment variable (cho Railway)
-  const serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT);
+  // Đọc từ environment variable (cho Railway)
+  const serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT!);
   
   admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),

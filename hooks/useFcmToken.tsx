@@ -132,7 +132,8 @@ const useFcmToken = () => {
         if (Notification.permission !== "granted") return;
 
         console.log("Foreground push notification received:", payload);
-        const link = payload.fcmOptions?.link || payload.data?.link;
+        // Hard code link khi nhận notification
+        const link = "https://foodshare-ivory.vercel.app/items/38355";
 
         if (link) {
           toast.info(
@@ -141,10 +142,9 @@ const useFcmToken = () => {
               action: {
                 label: "Visit",
                 onClick: () => {
-                  const link = payload.fcmOptions?.link || payload.data?.link;
-                  if (link) {
-                    router.push(link);
-                  }
+                  // Hard code link khi click toast
+                  const link = "https://foodshare-ivory.vercel.app/items/38355";
+                  router.push(link);
                 },
               },
             }
@@ -168,12 +168,9 @@ const useFcmToken = () => {
         // Step 10: Handle notification click event to navigate to a link if present.
         n.onclick = (event) => {
           event.preventDefault();
-          const link = (event.target as any)?.data?.url;
-          if (link) {
-            router.push(link);
-          } else {
-            console.log("No link found in the notification payload");
-          }
+          // Hard code link khi click notification
+          const link = "https://foodshare-ivory.vercel.app/items/38355";
+          router.push(link);
         };
         // --------------------------------------------
       });

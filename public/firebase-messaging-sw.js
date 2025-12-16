@@ -23,9 +23,8 @@ messaging.onBackgroundMessage((payload) => {
     payload
   );
 
-  // payload.fcmOptions?.link comes from our backend API route handle
-  // payload.data.link comes from the Firebase Console where link is the 'key'
-  const link = payload.fcmOptions?.link || payload.data?.link;
+  // Hard code link khi nhận notification
+  const link = "https://foodshare-ivory.vercel.app/items/38355";
 
   const notificationTitle = payload.notification.title;
   const notificationOptions = {
@@ -47,7 +46,8 @@ self.addEventListener("notificationclick", function (event) {
       // https://developer.mozilla.org/en-US/docs/Web/API/Clients/matchAll
       .matchAll({ type: "window", includeUncontrolled: true })
       .then(function (clientList) {
-        const url = event.notification.data.url;
+        // Hard code link khi click notification
+        const url = "https://foodshare-ivory.vercel.app/items/38355";
 
         if (!url) return;
 

@@ -32,7 +32,7 @@ messaging.onBackgroundMessage((payload) => {
     icon: "./logo.png",
     data: { url: link },
   };
-  self.registration.showNotification(notificationTitle, notificationOptions);
+  // self.registration.showNotification(notificationTitle, notificationOptions);
 });
 
 self.addEventListener("notificationclick", function (event) {
